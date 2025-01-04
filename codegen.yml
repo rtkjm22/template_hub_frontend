@@ -1,0 +1,15 @@
+# codegen.yml
+schema: 'http://localhost:3001/graphql' # NestJSのGraphQLエンドポイント
+documents:
+  - 'graphql/**/*.ts' # フロントに置く .graphql ファイルを指定
+generates:
+  ./gql/generated/:
+    preset: client
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-apollo
+    config:
+      withHooks: true
+      withComponent: false
+      withHOC: false
