@@ -39,41 +39,52 @@ export type Query = {
 
 
 export type QuerySearchUsersArgs = {
-  fullname: Scalars['String']['input'];
+  lastName: Scalars['String']['input'];
 };
 
 export type RegisterDto = {
-  fullname: Scalars['String']['input'];
+  email: Scalars['String']['input'];
+  firstName: Scalars['String']['input'];
+  firstNameKana: Scalars['String']['input'];
+  lastName: Scalars['String']['input'];
+  lastNameKana: Scalars['String']['input'];
 };
 
 export type User = {
   __typename?: 'User';
   avatarUrl?: Maybe<Scalars['String']['output']>;
   createdAt?: Maybe<Scalars['DateTime']['output']>;
-  email?: Maybe<Scalars['String']['output']>;
-  fullname: Scalars['String']['output'];
+  email: Scalars['String']['output'];
+  firstName: Scalars['String']['output'];
+  firstNameKana: Scalars['String']['output'];
   id?: Maybe<Scalars['Float']['output']>;
+  lastName: Scalars['String']['output'];
+  lastNameKana: Scalars['String']['output'];
   password?: Maybe<Scalars['String']['output']>;
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
 };
 
 export type RegisterUserMutationVariables = Exact<{
-  fullname: Scalars['String']['input'];
+  lastName: Scalars['String']['input'];
+  firstName: Scalars['String']['input'];
+  lastNameKana: Scalars['String']['input'];
+  firstNameKana: Scalars['String']['input'];
+  email: Scalars['String']['input'];
 }>;
 
 
-export type RegisterUserMutation = { __typename?: 'Mutation', register: { __typename?: 'User', id?: number | null, fullname: string } };
+export type RegisterUserMutation = { __typename?: 'Mutation', register: { __typename?: 'User', id?: number | null, lastName: string, email: string } };
 
 export type SearchUsersQueryVariables = Exact<{
-  fullname: Scalars['String']['input'];
+  lastName: Scalars['String']['input'];
 }>;
 
 
-export type SearchUsersQuery = { __typename?: 'Query', searchUsers: Array<{ __typename?: 'User', id?: number | null, fullname: string }> };
+export type SearchUsersQuery = { __typename?: 'Query', searchUsers: Array<{ __typename?: 'User', id?: number | null, lastName: string }> };
 
 
-export const RegisterUserDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"RegisterUser"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"fullname"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"register"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"registerInput"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"fullname"},"value":{"kind":"Variable","name":{"kind":"Name","value":"fullname"}}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"fullname"}}]}}]}}]} as unknown as DocumentNode<RegisterUserMutation, RegisterUserMutationVariables>;
-export const SearchUsersDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"SearchUsers"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"fullname"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"searchUsers"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"fullname"},"value":{"kind":"Variable","name":{"kind":"Name","value":"fullname"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"fullname"}}]}}]}}]} as unknown as DocumentNode<SearchUsersQuery, SearchUsersQueryVariables>;
+export const RegisterUserDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"RegisterUser"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"lastName"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"firstName"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"lastNameKana"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"firstNameKana"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"email"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"register"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"registerInput"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"lastName"},"value":{"kind":"Variable","name":{"kind":"Name","value":"lastName"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"firstName"},"value":{"kind":"Variable","name":{"kind":"Name","value":"firstName"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"lastNameKana"},"value":{"kind":"Variable","name":{"kind":"Name","value":"lastNameKana"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"firstNameKana"},"value":{"kind":"Variable","name":{"kind":"Name","value":"firstNameKana"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"email"},"value":{"kind":"Variable","name":{"kind":"Name","value":"email"}}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"lastName"}},{"kind":"Field","name":{"kind":"Name","value":"email"}}]}}]}}]} as unknown as DocumentNode<RegisterUserMutation, RegisterUserMutationVariables>;
+export const SearchUsersDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"SearchUsers"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"lastName"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"searchUsers"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"lastName"},"value":{"kind":"Variable","name":{"kind":"Name","value":"lastName"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"lastName"}}]}}]}}]} as unknown as DocumentNode<SearchUsersQuery, SearchUsersQueryVariables>;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: { input: string; output: string; }
@@ -103,44 +114,58 @@ export type Query = {
 
 
 export type QuerySearchUsersArgs = {
-  fullname: Scalars['String']['input'];
+  lastName: Scalars['String']['input'];
 };
 
 export type RegisterDto = {
-  fullname: Scalars['String']['input'];
+  email: Scalars['String']['input'];
+  firstName: Scalars['String']['input'];
+  firstNameKana: Scalars['String']['input'];
+  lastName: Scalars['String']['input'];
+  lastNameKana: Scalars['String']['input'];
 };
 
 export type User = {
   __typename?: 'User';
   avatarUrl?: Maybe<Scalars['String']['output']>;
   createdAt?: Maybe<Scalars['DateTime']['output']>;
-  email?: Maybe<Scalars['String']['output']>;
-  fullname: Scalars['String']['output'];
+  email: Scalars['String']['output'];
+  firstName: Scalars['String']['output'];
+  firstNameKana: Scalars['String']['output'];
   id?: Maybe<Scalars['Float']['output']>;
+  lastName: Scalars['String']['output'];
+  lastNameKana: Scalars['String']['output'];
   password?: Maybe<Scalars['String']['output']>;
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
 };
 
 export type RegisterUserMutationVariables = Exact<{
-  fullname: Scalars['String']['input'];
+  lastName: Scalars['String']['input'];
+  firstName: Scalars['String']['input'];
+  lastNameKana: Scalars['String']['input'];
+  firstNameKana: Scalars['String']['input'];
+  email: Scalars['String']['input'];
 }>;
 
 
-export type RegisterUserMutation = { __typename?: 'Mutation', register: { __typename?: 'User', id?: number | null, fullname: string } };
+export type RegisterUserMutation = { __typename?: 'Mutation', register: { __typename?: 'User', id?: number | null, lastName: string, email: string } };
 
 export type SearchUsersQueryVariables = Exact<{
-  fullname: Scalars['String']['input'];
+  lastName: Scalars['String']['input'];
 }>;
 
 
-export type SearchUsersQuery = { __typename?: 'Query', searchUsers: Array<{ __typename?: 'User', id?: number | null, fullname: string }> };
+export type SearchUsersQuery = { __typename?: 'Query', searchUsers: Array<{ __typename?: 'User', id?: number | null, lastName: string }> };
 
 
 export const RegisterUserDocument = gql`
-    mutation RegisterUser($fullname: String!) {
-  register(registerInput: {fullname: $fullname}) {
+    mutation RegisterUser($lastName: String!, $firstName: String!, $lastNameKana: String!, $firstNameKana: String!, $email: String!) {
+  register(
+    registerInput: {lastName: $lastName, firstName: $firstName, lastNameKana: $lastNameKana, firstNameKana: $firstNameKana, email: $email}
+  ) {
     id
-    fullname
+    lastName
+    email
   }
 }
     `;
@@ -159,7 +184,11 @@ export type RegisterUserMutationFn = Apollo.MutationFunction<RegisterUserMutatio
  * @example
  * const [registerUserMutation, { data, loading, error }] = useRegisterUserMutation({
  *   variables: {
- *      fullname: // value for 'fullname'
+ *      lastName: // value for 'lastName'
+ *      firstName: // value for 'firstName'
+ *      lastNameKana: // value for 'lastNameKana'
+ *      firstNameKana: // value for 'firstNameKana'
+ *      email: // value for 'email'
  *   },
  * });
  */
@@ -171,10 +200,10 @@ export type RegisterUserMutationHookResult = ReturnType<typeof useRegisterUserMu
 export type RegisterUserMutationResult = Apollo.MutationResult<RegisterUserMutation>;
 export type RegisterUserMutationOptions = Apollo.BaseMutationOptions<RegisterUserMutation, RegisterUserMutationVariables>;
 export const SearchUsersDocument = gql`
-    query SearchUsers($fullname: String!) {
-  searchUsers(fullname: $fullname) {
+    query SearchUsers($lastName: String!) {
+  searchUsers(lastName: $lastName) {
     id
-    fullname
+    lastName
   }
 }
     `;
@@ -191,7 +220,7 @@ export const SearchUsersDocument = gql`
  * @example
  * const { data, loading, error } = useSearchUsersQuery({
  *   variables: {
- *      fullname: // value for 'fullname'
+ *      lastName: // value for 'lastName'
  *   },
  * });
  */
