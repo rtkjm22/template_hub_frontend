@@ -14,8 +14,8 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Learn more about it here: https://the-guild.dev/graphql/codegen/plugins/presets/preset-client#reducing-bundle-size
  */
 const documents = {
-    "\n  mutation RegisterUser($fullname: String!) {\n    register(registerInput: { fullname: $fullname }) {\n      id\n      fullname\n    }\n  }\n": types.RegisterUserDocument,
-    "\n  query SearchUsers($fullname: String!) {\n    searchUsers(fullname: $fullname) {\n      id\n      fullname\n    }\n  }\n": types.SearchUsersDocument,
+    "\n  mutation RegisterUser(\n    $lastName: String!\n    $firstName: String!\n    $lastNameKana: String!\n    $firstNameKana: String!\n    $email: String!\n  ) {\n    register(\n      registerInput: {\n        lastName: $lastName\n        firstName: $firstName\n        lastNameKana: $lastNameKana\n        firstNameKana: $firstNameKana\n        email: $email\n      }\n    ) {\n      id\n      lastName\n      email\n    }\n  }\n": types.RegisterUserDocument,
+    "\n  query SearchUsers($lastName: String!) {\n    searchUsers(lastName: $lastName) {\n      id\n      lastName\n    }\n  }\n": types.SearchUsersDocument,
 };
 
 /**
@@ -35,11 +35,11 @@ export function graphql(source: string): unknown;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  mutation RegisterUser($fullname: String!) {\n    register(registerInput: { fullname: $fullname }) {\n      id\n      fullname\n    }\n  }\n"): (typeof documents)["\n  mutation RegisterUser($fullname: String!) {\n    register(registerInput: { fullname: $fullname }) {\n      id\n      fullname\n    }\n  }\n"];
+export function graphql(source: "\n  mutation RegisterUser(\n    $lastName: String!\n    $firstName: String!\n    $lastNameKana: String!\n    $firstNameKana: String!\n    $email: String!\n  ) {\n    register(\n      registerInput: {\n        lastName: $lastName\n        firstName: $firstName\n        lastNameKana: $lastNameKana\n        firstNameKana: $firstNameKana\n        email: $email\n      }\n    ) {\n      id\n      lastName\n      email\n    }\n  }\n"): (typeof documents)["\n  mutation RegisterUser(\n    $lastName: String!\n    $firstName: String!\n    $lastNameKana: String!\n    $firstNameKana: String!\n    $email: String!\n  ) {\n    register(\n      registerInput: {\n        lastName: $lastName\n        firstName: $firstName\n        lastNameKana: $lastNameKana\n        firstNameKana: $firstNameKana\n        email: $email\n      }\n    ) {\n      id\n      lastName\n      email\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  query SearchUsers($fullname: String!) {\n    searchUsers(fullname: $fullname) {\n      id\n      fullname\n    }\n  }\n"): (typeof documents)["\n  query SearchUsers($fullname: String!) {\n    searchUsers(fullname: $fullname) {\n      id\n      fullname\n    }\n  }\n"];
+export function graphql(source: "\n  query SearchUsers($lastName: String!) {\n    searchUsers(lastName: $lastName) {\n      id\n      lastName\n    }\n  }\n"): (typeof documents)["\n  query SearchUsers($lastName: String!) {\n    searchUsers(lastName: $lastName) {\n      id\n      lastName\n    }\n  }\n"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};
