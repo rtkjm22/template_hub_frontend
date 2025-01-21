@@ -1,11 +1,12 @@
 'use client'
-
-import { piyo } from "../actions"
+import { signin, login, logout } from '../actions'
 
 export default function Button() {
   return (
     <div>
-      <button onClick={piyo}>ユーザーを作成する</button>
+      <button onClick={signin}>「サインイン」</button>
+      <button onClick={login}>「ログイン」</button>
+      <button onClick={logout}>「ログアウト」</button>
     </div>
   )
 }

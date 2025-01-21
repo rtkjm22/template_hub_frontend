@@ -1,4 +1,3 @@
-// lib/apolloClient.ts
 import { ApolloClient, InMemoryCache, HttpLink, split } from '@apollo/client'
 import { GraphQLWsLink } from '@apollo/client/link/subscriptions'
 import { createClient } from 'graphql-ws'
@@ -6,13 +5,17 @@ import { getMainDefinition } from '@apollo/client/utilities'
 
 // HTTPリンク (Query/Mutation用)
 const httpLink = new HttpLink({
-  uri: 'http://localhost:3001/graphql' // NestJSのGraphQLエンドポイント(HTTP)
+  uri: 'https://localhost:3001/graphql', // NestJSのGraphQLエンドポイント(HTTP)
+  credentials: 'include' // HttpOnlyクッキーを使用するため
 })
 
 // WebSocketリンク (Subscription用)
 const wsLink = new GraphQLWsLink(
   createClient({
-    url: 'ws://localhost:3001/graphql' // NestJSのGraphQLエンドポイント(WS)
+    url: 'wss://localhost:3001/graphql', // NestJSのGraphQLエンドポイント(WS)
+    connectionParams: {
+      // 必要に応じてトークンをヘッダーとして渡す
+    }
   })
 )
 
@@ -31,10 +34,14 @@ const splitLink = split(
 )
 
 export const client = new ApolloClient({
-  uri: 'http://localhost:3001/graphql',
   link: splitLink,
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  cache: new InMemoryCache()
+  cache: new InMemoryCache(),
+  defaultOptions: {
+    query: {
+      fetchPolicy: 'no-cache'
+    },
+    mutate: {
+      fetchPolicy: 'no-cache'
+    }
+  }
 })
