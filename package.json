@@ -25,6 +25,7 @@
     "@graphql-codegen/typescript-operations": "^4.4.0",
     "@graphql-codegen/typescript-react-apollo": "^4.3.2",
     "@types/node": "^20",
+    "@types/node-fetch": "^2.6.12",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "dotenv": "^16.4.7",

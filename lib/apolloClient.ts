@@ -3,10 +3,17 @@ import { GraphQLWsLink } from '@apollo/client/link/subscriptions'
 import { createClient } from 'graphql-ws'
 import { getMainDefinition } from '@apollo/client/utilities'
 
+let cookieFromNest: string | null = null
+
 // HTTPリンク (Query/Mutation用)
 const httpLink = new HttpLink({
-  uri: 'https://localhost:3001/graphql', // NestJSのGraphQLエンドポイント(HTTP)
-  credentials: 'include' // HttpOnlyクッキーを使用するため
+  uri: 'https://localhost:3001/graphql',
+  credentials: 'include', // クッキーを自動で送信
+  fetch: async (uri, options) => {
+    const response = await fetch(uri, options)
+    cookieFromNest = response.headers.get('set-cookie')
+    return response
+  }
 })
 
 // WebSocketリンク (Subscription用)
@@ -14,14 +21,12 @@ const wsLink = new GraphQLWsLink(
   createClient({
     url: 'wss://localhost:3001/graphql', // NestJSのGraphQLエンドポイント(WS)
     connectionParams: {
-      // 必要に応じてトークンをヘッダーとして渡す
+      credentials: 'include' // クッキーを自動で送信
     }
   })
 )
 
-// splitLink:
-// 1. OperationDefinition が "subscription" なら wsLink
-// 2. それ以外(Query/Mutation)は httpLink
+// splitLink: subscription用とそれ以外を分岐
 const splitLink = split(
   ({ query }) => {
     const def = getMainDefinition(query)
@@ -33,7 +38,7 @@ const splitLink = split(
   httpLink
 )
 
-export const client = new ApolloClient({
+const client = new ApolloClient({
   link: splitLink,
   cache: new InMemoryCache(),
   defaultOptions: {
@@ -45,3 +50,5 @@ export const client = new ApolloClient({
     }
   }
 })
+
+export { client, cookieFromNest }
