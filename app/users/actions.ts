@@ -37,3 +37,11 @@ export async function logout() {
   if (!res.ok) throw new Error('ログアウト失敗')
   return res.json()
 }
+
+export async function updateToken() {
+  const res = await fetchApi('/api/auth/update-token', {
+    method: 'GET'
+  })
+  if (!res.ok) throw new Error('トークンの認証失敗')
+  return res.json()
+}

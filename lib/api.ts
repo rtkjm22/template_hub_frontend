@@ -60,7 +60,7 @@ export const APIHandler = (
       return response
     } catch (error: unknown) {
       if (error instanceof ApolloError) {
-        if (error.graphQLErrors) {
+        if (error.graphQLErrors.length !== 0) {
           console.error('GraphQLエラー:', error.graphQLErrors)
           return NextResponse.json(
             {
