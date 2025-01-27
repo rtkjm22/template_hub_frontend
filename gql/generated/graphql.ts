@@ -36,6 +36,7 @@ export type Mutation = {
   login: LoginResponse;
   logout: Scalars['String']['output'];
   signin: SigninResponse;
+  updateToken: Scalars['String']['output'];
 };
 
 
@@ -152,6 +153,7 @@ export type Mutation = {
   login: LoginResponse;
   logout: Scalars['String']['output'];
   signin: SigninResponse;
+  updateToken: Scalars['String']['output'];
 };
 
 
