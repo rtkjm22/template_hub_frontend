@@ -1,7 +1,7 @@
-import { NextResponse } from 'next/server'
-import { client } from '@/lib/apolloClient'
-import { LOGIN } from '@/graphql/mutations/Login'
-import { APIHandler } from '@/lib/api'
+import { NextResponse } from "next/server"
+import { client } from "@/lib/apolloClient"
+import { LOGIN } from "@/graphql/mutations/Login"
+import { APIHandler } from "@/lib/api"
 
 const postMethod = async (request: Request) => {
   const body = await request.json()
@@ -10,13 +10,13 @@ const postMethod = async (request: Request) => {
     mutation: LOGIN,
     variables: {
       email,
-      password
+      password,
     },
     context: {
       headers: {
-        cookie: request.headers.get('cookie') || null
-      }
-    }
+        cookie: request.headers.get("cookie") || null,
+      },
+    },
   })
   return NextResponse.json(data)
 }
