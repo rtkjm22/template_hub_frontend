@@ -1,5 +1,5 @@
-'use client'
-import { signin, login, logout, updateToken } from '../actions'
+"use client"
+import { signin, login, logout, updateToken } from "../../actions"
 
 export default function Button() {
   return (

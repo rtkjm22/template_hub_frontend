@@ -1,9 +1,9 @@
 // app/sample-sub/subscription-client.tsx
-'use client' // これでClient Componentとして扱われる
+"use client" // これでClient Componentとして扱われる
 
-import React, { useEffect, useState } from 'react'
-import { ApolloProvider, gql, useSubscription } from '@apollo/client'
-import { client } from '@/lib/apolloClient'
+import React, { useEffect, useState } from "react"
+import { ApolloProvider, gql, useSubscription } from "@apollo/client"
+import { client } from "@/lib/apolloClient"
 
 type Sample = {
   id: number
@@ -20,7 +20,7 @@ const SAMPLE_SUBSCRIPTION = gql`
 `
 
 function SubscriptionComponent({
-  initialSamples
+  initialSamples,
 }: {
   initialSamples: Sample[]
 }) {
@@ -47,7 +47,7 @@ function SubscriptionComponent({
 }
 
 export default function SubscriptionClient({
-  initialSamples
+  initialSamples,
 }: {
   initialSamples: Sample[]
 }) {
