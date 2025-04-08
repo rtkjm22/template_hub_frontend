@@ -5,6 +5,78 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  /*** 
+    colors
+  ***/
+  /* primary */
+  --color-primary-light: #ed934c;
+  --color-primary: #ec6800;
+  --color-primary-rgb: 236, 104, 0;
+  --color-primary-dark: #b04e00;
+  --color-primary-light-grayish: #a6866d;
+  --color-primary-bg: #fef6f0;
+  --color-primary-company-bg: #fffcfa;
+
+  /* secondary */
+  --color-secondary-light: #444444;
+  --color-secondary: #333333;
+  --color-secondary-dark: #222222;
+
+  /* gray */
+  --color-gray-100: #f4f4f4;
+  --color-gray-200: #e8e8e8;
+  --color-gray-300: #d9d9d9;
+  --color-gray-400: #bbbbbb;
+  --color-gray-500: #8f8f8f;
+  --color-gray-600: #666666;
+  --color-gray-bg: rgba(255, 255, 255, 0.64);
+
+  /* status */
+  --color-info: #3535f9;
+  --color-success: #00b345;
+  --color-success-bg: #dbf7dd;
+  --color-warn: #fab222;
+  --color-error: #f4212e;
+  --color-error-dark: #b81923;
+  --color-error-bg: #fee9eb;
+
+  /***
+    box-shadow
+  ***/
+  --shadow-100: 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+  --shadow-200: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+  --shadow-300: 0 3px 12px 0 rgba(0, 0, 0, 0.16);
+  --shadow-400: 0 0px 16px 0 rgba(0, 0, 0, 0.32);
+  --shadow-orange-light: 0 0 0 3px rgba(236, 104, 0, 0.64);
+  --shadow-orange: 0px 0px 8px 0px #ec6800;
+  --shadow-orange-dark: 0px 2px 4px 0px rgba(176, 78, 0, 0.16);
+
+  /***
+    border-color
+  ***/
+  --border-100: #e8e8e8;
+  --border-200: #d9d9d9;
+  --border-300: #bbbbbb;
+
+  /***
+    max-width
+  ***/
+  --max-width-content-xs: 500px;
+  --max-width-content-s: 640px;
+  --max-width-content-m: 880px;
+  --max-width-content-l: 1080px;
+  --max-width-content-xl: 1280px;
+
+  /***
+    font-size
+  ***/
+  --font-size-2xs: 10px;
+
+  /***
+    z-index
+  ***/
+  --z-index-header: 10;
+  --z-index-modal: 20;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -18,4 +90,19 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  /* 
+    スクロールバーを削除
+    NOTE:https://zenn.dev/nbr41to/articles/11efbc362a89ba
+   */
+  .hidden-scrollbar {
+    -ms-overflow-style: none; /* IE, Edge 対応 */
+    scrollbar-width: none; /* Firefox 対応 */
+  }
+  .hidden-scrollbar::-webkit-scrollbar {
+    /* Chrome, Safari 対応 */
+    display: none;
+  }
 }
